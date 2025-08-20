@@ -31,6 +31,9 @@ const todos = [
   // ============================================
   
   /*
+  let ages = [12, 18, 22, 16, 25];
+let adults = ages.filter((age) => age >= 18);
+console.log(adults); // Outputs: [18, 22, 25]
   🔹 Task 1: Filter Incomplete Tasks
   
   Step-by-Step:
@@ -38,7 +41,9 @@ const todos = [
   2. Use an anonymous function as the callback.
   3. Return only the tasks that are not completed.
   */
-  
+  let incompleteTasks = todos.filter(function (todos) {
+    return todos.completed == false });
+  //console.log(incompleteTasks);
   
   /*
   🔹 Task 2: Sort Tasks by Priority
@@ -48,6 +53,9 @@ const todos = [
   2. Use an anonymous function as the comparison function.
   3. Sort tasks in ascending order of priority (1 = highest).
   */
+   let sortArray = todos.sort(function (a, b) {
+    return a.priority - b.priority});
+  //console.log(sortArray);
   
   
   /*
@@ -58,7 +66,13 @@ const todos = [
   2. Use an anonymous function to modify each object.
   3. Change the `completed` property to `true` for every task.
   */
-  
+   //const result = array2D.map(row => row.map(element => element * 2));
+  const completeTask = todos.map(element=> ({
+    task: element.task,
+    completed: "true",
+    priority: element.priority
+  }));
+  //console.log(completeTask)
   
   /*
   🔹 Task 4: Combine Filters
@@ -68,14 +82,21 @@ const todos = [
   2. Then, sort the filtered results by priority using `sort()`.
   3. Use method chaining to perform both steps together.
   */
+   
+    // filter the incompleted task
   
+    const incompleteTodos = todos.filter(todo => !todo.completed);
+    // sort the filter results
+    incompleteTodos.sort((a, b) => a.priority - b.priority);
+   const sortedIncompleteTodos = todos.filter(todo => !todo.completed).sort((a, b) => a.priority - b.priority);
+      
+
+   //============================================
+   //🧪 Console Test Your Work
+  //===========================================
   
-  // ============================================
-  // 🧪 Console Test Your Work
-  // ============================================
-  
-  // console.log("Incomplete Tasks:", ...);
-  // console.log("Sorted by Priority:", ...);
-  // console.log("All Tasks Completed:", ...);
-  // console.log("Sorted Incomplete Tasks:", ...);
+   console.log("Incomplete Tasks:", incompleteTasks);
+   console.log("Sorted by Priority:", sortArray);
+ console.log("All Tasks Completed:", completeTask);
+   console.log("Sorted Incomplete Tasks:", sortedIncompleteTodos);
   
